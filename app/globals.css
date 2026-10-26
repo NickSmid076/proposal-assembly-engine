@@ -1,0 +1,42 @@
+/* Copied from the main site (Website/app/globals.css): base, components and the reveal system.
+   Page-specific styles from the main site are left out. Keep these in sync by hand. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html { scroll-padding-top: 88px; }
+body { overflow-x: clip; }
+body { @apply bg-white text-ink font-sans antialiased; }
+h1, h2, h3, h4 { @apply font-display; text-wrap: balance; }
+
+@layer components {
+  .container-site { @apply mx-auto w-full max-w-site px-5 sm:px-6; }
+  /* Attio-style framed column: hairlines down both sides of the content. */
+  .frame { @apply relative mx-auto w-full max-w-[1240px] border-x px-5 sm:px-10 lg:px-[70px]; }
+  .frame-light { @apply border-ink/[0.08]; }
+  .frame-dark { @apply border-white/[0.08]; }
+  .eyebrow { @apply font-mono text-[13px] font-medium uppercase tracking-[0.08em] text-cobalt; }
+  .btn { @apply inline-flex whitespace-nowrap h-12 items-center justify-center gap-2 rounded-md px-6 font-display text-[15px] font-bold; transition: background-color .15s cubic-bezier(.2,.8,.2,1), border-color .15s cubic-bezier(.2,.8,.2,1), color .15s cubic-bezier(.2,.8,.2,1), transform .14s cubic-bezier(.2,.8,.2,1); }
+  .btn:active { transform: scale(.97); }
+  .btn-primary { @apply btn bg-cobalt text-white hover:bg-cobalt-2; }
+  .btn-outline { @apply btn border-2 border-cobalt text-white hover:bg-cobalt/10; }
+  .focus-ring { @apply focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-peri; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+/* Entrances (lib/motion Reveal/Stagger/SplitHeading). Hidden only when JS runs and motion is allowed;
+   components/RevealObserver adds data-shown when the element enters the viewport. */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] { transition: opacity .6s cubic-bezier(.2,.8,.2,1) var(--rd, 0s), transform .6s cubic-bezier(.2,.8,.2,1) var(--rd, 0s); }
+  .js [data-reveal]:not([data-shown]) { opacity: 0; transform: translateY(16px); }
+  [data-stagger] > [data-reveal]:nth-child(2) { --rd: .06s; }
+  [data-stagger] > [data-reveal]:nth-child(3) { --rd: .12s; }
+  [data-stagger] > [data-reveal]:nth-child(4) { --rd: .18s; }
+  [data-stagger] > [data-reveal]:nth-child(5) { --rd: .24s; }
+  [data-stagger] > [data-reveal]:nth-child(n+6) { --rd: .3s; }
+}
