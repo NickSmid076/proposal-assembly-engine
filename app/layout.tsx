@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RevealObserver from "@/components/RevealObserver";
 import MotionRoot from "@/components/MotionRoot";
+import { LangProvider } from "@/lib/lang";
 
 // Same fonts and variables as the main site (Website/app/[locale]/layout.tsx).
 const manrope = Manrope({ subsets: ["latin"], weight: ["500", "600", "700", "800"], variable: "--font-manrope" });
@@ -30,9 +31,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <RevealObserver />
         <MotionRoot>
-          <Header />
-          <main id="top">{children}</main>
-          <Footer />
+          <LangProvider>
+            <Header />
+            <main id="top">{children}</main>
+            <Footer />
+          </LangProvider>
         </MotionRoot>
       </body>
     </html>

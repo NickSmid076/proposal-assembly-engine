@@ -4,14 +4,16 @@ Separate Next.js site for **proposal.assembly-engine.com**. It hosts the persona
 after they reply to a cold email (`/v/<slug>`), plus a private overview of all of them (`/overview`).
 
 Same stack and pinned versions as the main site (`../../Website`): Next 15 (app router), React 19,
-Tailwind 3.4, TypeScript, framer-motion. Dutch only, no i18n routing.
+Tailwind 3.4, TypeScript, framer-motion, three.js (@react-three/fiber). Dutch by default, no i18n routing.
+A proposal page can offer English too: render `<Bilingual />` (from `lib/lang.tsx`) and the header switch
+then toggles NL/EN in place (saved per visitor; `?lang=en` in the link opens it in English). See the Lemmens page.
 
 ## Run
 
 ```bash
 npm install
 cp .env.example .env.local     # then set OVERVIEW_PASSWORD
-npm run dev                    # http://localhost:3000/overview
+npm run dev                    # http://localhost:3000 opens the overview
 npm run build && npm run lint  # both must pass before deploying
 ```
 
@@ -19,10 +21,11 @@ npm run build && npm run lint  # both must pass before deploying
 
 | Route | What |
 | --- | --- |
-| `/` | Redirects to https://www.assembly-engine.com |
+| `/` | Redirects to https://www.assembly-engine.com (to `/overview` in `npm run dev`) |
 | `/overview` | Private gallery of all proposals. Password-gated. Filters sync to the URL: `?offer=web&status=bekeken&q=kade&sort=views` |
 | `/login` | Password form for the overview |
-| `/v/<slug>` | Proposal page for one firm. Stub for now. Unknown slugs return 404 |
+| `/v/<slug>` | Proposal page for one firm. Web proposals share one template (see `content/leads/README.md`); leads without a finished page get a stub. Unknown slugs return 404 |
+| `/dev/concept/<slug>` | Dev only (404 in production): the lead's concept full width, used by `npm run capture <slug>` |
 | `/robots.txt` | `Disallow: /` (there is deliberately no sitemap) |
 
 ## Add a lead
@@ -32,7 +35,8 @@ npm run build && npm run lint  # both must pass before deploying
    `sentAt` (`YYYY-MM-DD`), `views`, `notes`. Types and labels live in `lib/leads.ts`.
 2. Pick a slug that is hard to guess (the slug is the only thing that "protects" a proposal page),
    e.g. `kadewerf-advocaten-7f3k`.
-3. Per-firm content will go in `content/leads/<slug>/` (see the README there; not wired up yet).
+3. Per-firm content goes in `content/leads/<slug>/`. For a web proposal follow the checklist in
+   `content/leads/README.md` (shared template, your own concept site, `npm run capture <slug>`).
 4. The overview card thumbnail is generated from the slug, so there is nothing to upload.
 
 The current leads are **fictional placeholders**. Views and status are typed in by hand for now.

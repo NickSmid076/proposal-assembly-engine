@@ -1,4 +1,7 @@
-import type { CSSProperties, ElementType, ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
+
+// HTML tags only. A generic ElementType breaks once @react-three/fiber adds its three.js tags to JSX.
+type ElementType = keyof HTMLElementTagNameMap;
 
 // Motion tokens (see .claude/skills/ae-motion). Use these instead of ad-hoc values.
 export const EASE = [0.2, 0.8, 0.2, 1] as const;

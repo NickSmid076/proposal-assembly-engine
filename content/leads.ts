@@ -7,9 +7,11 @@ import type { Lead } from "@/lib/leads";
 // ─────────────────────────────────────────────────────────────────────────────
 //
 // Server-only: import this from server components (pages), never from a "use client" file.
-// Per-firm proposal content will live in content/leads/<slug>/ (see the README there).
+// Per-firm proposal content lives in content/leads/<slug>/ (see the README there).
 
 export const leads: Lead[] = [
+  // REAL lead (not fictional). Analysis: Sales/Prospects/lemmens-makelaardij/analysis.md (outside this repo).
+  { slug: "lemmens-550127", firm: "Lemmens Makelaardij", town: "Tilburg", icp: "1A", offer: "web", status: "concept", sentAt: "2026-10-27", views: 0, notes: "Concept home + waardebepaling klaar. Open: Funda-score, pilotprijs, teamgrootte, wie beheert het platform." },
   { slug: "brouwer-lint-accountants", firm: "Brouwer & Lint Accountants", town: "Dordrecht", icp: "1A", offer: "web", status: "bekeken", sentAt: "2026-10-21", views: 6, notes: "Site uit 2016, geen mobiele weergave. Reageerde binnen een uur." },
   { slug: "kadewerf-advocaten", firm: "Kadewerf Advocaten", town: "Zwolle", icp: "3A", offer: "automatisering", status: "reactie", sentAt: "2026-10-19", views: 11, notes: "Wil intake-formulier koppelen aan dossiersysteem. Bel-afspraak volgt." },
   { slug: "van-oorschot-belastingadvies", firm: "Van Oorschot Belastingadvies", town: "Tilburg", icp: "1B", offer: "dashboards", status: "verstuurd", sentAt: "2026-10-24", views: 0, notes: "Drie vestigingen, rapportage nu in Excel." },

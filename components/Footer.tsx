@@ -1,12 +1,18 @@
-// Copied from Website/components/Footer.tsx. Differences: Dutch strings are hardcoded, every link goes to
+"use client";
+// Copied from Website/components/Footer.tsx. Differences: strings come from lib/site (NL, plus EN on bilingual pages), every link goes to
 // the main site, and the cookie-settings button is gone (this site sets no consent cookies).
 import Logo from "./Logo";
-import { FOOTER as t, NAV, SERVICES, main } from "@/lib/site";
+import { FOOTER, FOOTER_EN, NAV as NAV_NL, NAV_EN, SERVICES, SERVICES_EN, main as mainNl } from "@/lib/site";
+import { useLang } from "@/lib/lang";
 
 const linkCls = "focus-ring inline-flex min-h-[24px] items-center rounded-sm text-white/75 transition-colors duration-150 hover:text-white";
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const { lang } = useLang();
+  const t = lang === "en" ? FOOTER_EN : FOOTER;
+  const NAV = lang === "en" ? NAV_EN : NAV_NL;
+  const main = (p?: string) => mainNl(p, lang);
   return (
     <footer className="border-t border-white/[0.08] bg-ink-2 text-white">
       <div className="frame frame-dark grid gap-12 py-16 md:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))]">
@@ -16,7 +22,7 @@ export default function Footer() {
         </div>
         <nav aria-label={t.services}>
           <p className="text-[14px] font-semibold text-white">{t.services}</p>
-          <ul className="mt-4 space-y-2.5 text-[14px]">{SERVICES.map((s) => <li key={s.slug}><a href={main(`/services/${s.slug}`)} className={linkCls}>{s.name}</a></li>)}</ul>
+          <ul className="mt-4 space-y-2.5 text-[14px]">{SERVICES.map((s, i) => <li key={s.slug}><a href={main(`/services/${s.slug}`)} className={linkCls}>{lang === "en" ? SERVICES_EN[i].name : s.name}</a></li>)}</ul>
         </nav>
         <nav aria-label={t.company}>
           <p className="text-[14px] font-semibold text-white">{t.company}</p>

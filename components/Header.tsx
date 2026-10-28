@@ -1,11 +1,12 @@
 "use client";
-// Copied from Website/components/Header.tsx. Differences: Dutch strings are hardcoded (no I18nProvider),
+// Copied from Website/components/Header.tsx. Differences: strings come from lib/site (NL, plus EN on bilingual pages),
 // every link is an absolute link to the main site, and the newsletter switch is gone (it is off there too).
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Logo from "./Logo";
 import { ChevronDown, Menu, Close } from "./icons";
-import { MAIN, NAV as t, SERVICES, main } from "@/lib/site";
+import { MAIN, NAV, NAV_EN, SERVICES, SERVICES_EN, main as mainNl } from "@/lib/site";
+import { useLang } from "@/lib/lang";
 
 function Dropdown({ label, items }: { label: string; items: { label: string; href: string; sub?: string }[] }) {
   return (
@@ -27,22 +28,40 @@ function Dropdown({ label, items }: { label: string; items: { label: string; hre
   );
 }
 
-// This site is Dutch only: NL is the current language, EN goes to the English main site.
+// Bilingual proposal pages: the switch changes the page language in place.
+// Everywhere else this site is Dutch only, and EN goes to the English main site.
 function LangSwitch() {
+  const { lang, setLang, bilingual } = useLang();
+  const t = lang === "en" ? NAV_EN : NAV;
+  const cls = "focus-ring inline-flex h-9 items-center gap-1 rounded-md border border-line px-2.5 font-mono text-[12px] uppercase tracking-[0.08em] text-slate";
+  if (!bilingual) {
+    return (
+      <a href={`${MAIN}/en`} hrefLang="en" className={`${cls} hover:text-ink`}>
+        <span className="text-ink">NL</span><span aria-hidden className="text-line-2">/</span><span>EN</span>
+        <span className="sr-only"> · {t.language}: EN</span>
+      </a>
+    );
+  }
   return (
-    <a href={`${MAIN}/en`} hrefLang="en"
-      className="focus-ring inline-flex h-9 items-center gap-1 rounded-md border border-line px-2.5 font-mono text-[12px] uppercase tracking-[0.08em] text-slate hover:text-ink">
-      <span className="text-ink">NL</span><span aria-hidden className="text-line-2">/</span><span>EN</span>
-      <span className="sr-only"> · {t.language}: EN</span>
-    </a>
+    <div role="group" aria-label={t.language} className={`${cls} gap-0 p-0.5`}>
+      {(["nl", "en"] as const).map((l) => (
+        <button key={l} type="button" lang={l} aria-pressed={lang === l} onClick={() => setLang(l)}
+          className={`focus-ring h-full rounded px-2 transition-colors duration-150 ${lang === l ? "bg-ink text-white" : "hover:text-ink"}`}>
+          {l === "nl" ? "NL" : "EN"}<span className="sr-only">{l === "nl" ? " (Nederlands)" : " (English)"}</span>
+        </button>
+      ))}
+    </div>
   );
 }
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const path = usePathname();
+  const { lang } = useLang();
+  const t = lang === "en" ? NAV_EN : NAV;
+  const main = (p?: string) => mainNl(p, lang);
   useEffect(() => setOpen(false), [path]);
-  const services = SERVICES.map((s) => ({ label: s.name, href: main(`/services/${s.slug}`), sub: s.lead }));
+  const services = SERVICES.map((s, i) => ({ label: lang === "en" ? SERVICES_EN[i].name : s.name, href: main(`/services/${s.slug}`), sub: lang === "en" ? SERVICES_EN[i].lead : s.lead }));
   const resources = [{ label: t.blog, href: main("/blog") }, { label: t.howWeWork, href: `${main()}#how-we-work` }];
   const links = [{ label: t.caseStudy, href: main("/case-studies/energielabel-breda") }, { label: t.about, href: main("/about") }, { label: t.contact, href: main("/contact") }];
   return (
@@ -59,7 +78,9 @@ export default function Header() {
           <LangSwitch />
           <a href={main("/contact")} className="btn-primary focus-ring h-10 px-4 text-[14px]">{t.cta}</a>
         </div>
-        <button type="button" className="focus-ring ml-auto rounded p-2 lg:hidden" aria-expanded={open} aria-label={open ? t.close : t.menu} onClick={() => setOpen(!open)}>
+        {/* Small screens: keep the language switch visible next to the menu button. */}
+        <div className="ml-auto lg:hidden"><LangSwitch /></div>
+        <button type="button" className="focus-ring rounded p-2 lg:hidden" aria-expanded={open} aria-label={open ? t.close : t.menu} onClick={() => setOpen(!open)}>
           {open ? <Close className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
       </div>
@@ -71,7 +92,7 @@ export default function Header() {
             <ul className="mt-3 border-t border-line pt-3">
               {[...links, { label: t.blog, href: main("/blog") }].map((l) => <li key={l.label}><a href={l.href} className="block py-2.5 font-display text-[16px] font-semibold">{l.label}</a></li>)}
             </ul>
-            <div className="mt-4 flex items-center gap-3"><LangSwitch /><a href={main("/contact")} className="btn-primary h-11 flex-1">{t.cta}</a></div>
+            <div className="mt-4 flex items-center gap-3"><a href={main("/contact")} className="btn-primary h-11 flex-1">{t.cta}</a></div>
           </div>
         </nav>
       )}

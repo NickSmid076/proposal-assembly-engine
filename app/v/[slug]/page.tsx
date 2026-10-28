@@ -5,6 +5,7 @@ import { OFFER_LABEL } from "@/lib/leads";
 import { main } from "@/lib/site";
 import { ArrowRight } from "@/components/icons";
 import { Reveal, SplitHeading } from "@/lib/motion";
+import { PROPOSALS } from "@/components/proposal/registry";
 
 // Prospect-facing page. Show only what the prospect may see: never status, views, ICP or notes.
 // Do not link to /overview or to other proposals from here.
@@ -22,8 +23,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Proposal({ params }: Props) {
   const lead = getLead((await params).slug);
   if (!lead) notFound();
+  // Finished proposals (components/proposal/registry.tsx). Web proposals share one template.
+  const Custom = PROPOSALS[lead.slug]?.Page;
+  if (Custom) return <Custom />;
 
-  // TODO: layout per offer (web / dashboards / automatisering), with content from content/leads/<slug>/.
+  // Not ready yet: "in preparation" stub. TODO: templates for the dashboards and automatisering offers.
   return (
     <section className="bg-white">
       <div className="frame frame-light pb-28 pt-16 sm:pt-24">

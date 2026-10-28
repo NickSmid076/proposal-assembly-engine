@@ -16,6 +16,7 @@ const pick = <T extends string>(v: string | null, allowed: readonly T[]) => (all
 
 /** Status pill colours. Text/background pairs meet WCAG AA at 12px. */
 const STATUS_CLS: Record<Status, string> = {
+  concept: "bg-white text-slate ring-line-2",
   verstuurd: "bg-sunken text-slate ring-line",
   bekeken: "bg-ice text-[#2347CC] ring-peri/60",
   reactie: "bg-warn-soft text-[#7A4F0F] ring-[#EBD7B0]",
@@ -59,7 +60,7 @@ function Card({ lead }: { lead: Lead }) {
         </p>
         {lead.notes && <p className="mt-2 line-clamp-2 text-[13.5px] leading-[1.45] text-slate">{lead.notes}</p>}
         <div aria-hidden className="h-4 shrink-0" /><div className="mt-auto flex items-center justify-between border-t border-line pt-3 font-mono text-[11.5px] uppercase tracking-[0.06em] text-slate">
-          <span>Verstuurd op <time dateTime={lead.sentAt} className="text-ink">{formatDate(lead.sentAt)}</time></span>
+          <span>{lead.status === "concept" ? "Aangemaakt op" : "Verstuurd op"} <time dateTime={lead.sentAt} className="text-ink">{formatDate(lead.sentAt)}</time></span>
           <span className="inline-flex items-center gap-1.5">
             <Eye className="h-3.5 w-3.5" /><span className="text-ink">{lead.views}</span> {lead.views === 1 ? "view" : "views"}
             <ArrowRight className="ml-1 h-3.5 w-3.5 text-cobalt opacity-0 transition group-hover:translate-x-0.5 group-hover:opacity-100" />
