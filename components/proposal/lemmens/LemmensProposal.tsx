@@ -17,8 +17,8 @@ export function LemmensProposal() {
     <>
       <Bilingual />
       <WebProposal content={proposal}
-        preview={<LemmensPreview firm={firm} fontClass={fontClass} />}
-        phone={<LemmensPhone firm={firm} fontClass={fontClass} />} />
+        preview={<LemmensPreview key="preview" firm={firm} fontClass={fontClass} />}
+        phone={<LemmensPhone key="phone" firm={firm} fontClass={fontClass} />} />
     </>
   );
 }
