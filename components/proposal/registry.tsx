@@ -3,6 +3,7 @@
 // each entry only brings its own content and concept site. See content/leads/README.md to add one.
 import type { JSX } from "react";
 import { BvaConceptCapture, BvaProposal } from "./bva/BvaProposal";
+import { DomstadConceptCapture, DomstadProposal } from "./domstad/DomstadProposal";
 import { LemmensConceptCapture, LemmensProposal } from "./lemmens/LemmensProposal";
 
 type Entry = {
@@ -15,4 +16,5 @@ type Entry = {
 export const PROPOSALS: Record<string, Entry> = {
   "lemmens-550127": { Page: LemmensProposal, Capture: LemmensConceptCapture },
   "bva-164550": { Page: BvaProposal, Capture: BvaConceptCapture },
+  "domstad-897791": { Page: DomstadProposal, Capture: DomstadConceptCapture },
 };
