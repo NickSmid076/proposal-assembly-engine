@@ -6,11 +6,9 @@ const nextConfig = {
   async headers() {
     return [{ source: "/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow, noarchive" }] }];
   },
-  // The bare domain has nothing to show; send visitors to the main site.
-  // In local dev (`npm run dev`), open the overview instead.
+  // The bare domain opens the private overview (password gate in middleware.ts).
   async redirects() {
-    const destination = process.env.NODE_ENV === "development" ? "/overview" : "https://www.assembly-engine.com";
-    return [{ source: "/", destination, permanent: false }];
+    return [{ source: "/", destination: "/overview", permanent: false }];
   },
 };
 export default nextConfig;
