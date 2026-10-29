@@ -5,6 +5,7 @@ import type { JSX } from "react";
 import { BvaConceptCapture, BvaProposal } from "./bva/BvaProposal";
 import { DomstadConceptCapture, DomstadProposal } from "./domstad/DomstadProposal";
 import { LemmensConceptCapture, LemmensProposal } from "./lemmens/LemmensProposal";
+import { RvlConceptCapture, RvlProposal } from "./rvl/RvlProposal";
 
 type Entry = {
   /** The proposal page. */
@@ -17,4 +18,5 @@ export const PROPOSALS: Record<string, Entry> = {
   "lemmens-550127": { Page: LemmensProposal, Capture: LemmensConceptCapture },
   "bva-164550": { Page: BvaProposal, Capture: BvaConceptCapture },
   "domstad-897791": { Page: DomstadProposal, Capture: DomstadConceptCapture },
+  "rvl-831843": { Page: RvlProposal, Capture: RvlConceptCapture },
 };

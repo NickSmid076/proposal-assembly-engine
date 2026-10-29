@@ -1,0 +1,207 @@
+// Copy for the RVL concept site (the mockup inside the proposal), Dutch and English.
+// Dutch uses "u" throughout, as RVL's own texts do. Facts come from `firm`
+// (content/leads/rvl-831843/proposal.ts); this file holds only interface text.
+import type { L } from "@/lib/lang";
+
+export const c = {
+  nav: {
+    items: { nl: ["Verkopen", "Aankopen", "Aanbod", "Ons team", "Contact"], en: ["Selling", "Buying", "Listings", "Our team", "Contact"] } as L<string[]>,
+    main: { nl: "Hoofdmenu", en: "Main menu" },
+    menu: { nl: "Menu", en: "Menu" },
+    close: { nl: "Sluiten", en: "Close" },
+    home: { nl: "naar de homepage", en: "to the homepage" },
+    call: { nl: "Bel", en: "Call" },
+  },
+  cta: { nl: "Gratis waardebepaling", en: "Free valuation" },
+  example: { nl: "voorbeeld", en: "example" },
+  hero: {
+    kicker: { nl: "NVM-makelaars in Utrecht en Leidsche Rijn, sinds 2010", en: "NVM estate agents in Utrecht and Leidsche Rijn, since 2010" },
+    lead: {
+      nl: "Strategisch verkopen begint bij de juiste waarde. Vul uw postcode in: wij komen langs en vertellen u wat uw woning nu kan opbrengen.",
+      en: "Selling strategically starts with the right value. Enter your postcode: we visit you and tell you what your home can fetch today.",
+    },
+    postcode: { nl: "Postcode", en: "Postcode" },
+    number: { nl: "Huisnr.", en: "No." },
+    photoAlt: {
+      nl: "Het team van Rosenberg Van Leusden Makelaars, in zwart-wit, op een bankje in een Utrechts park",
+      en: "The Rosenberg Van Leusden Makelaars team, in black and white, on a bench in a Utrecht park",
+    },
+    whatsapp: { nl: "WhatsApp, ook ’s avonds", en: "WhatsApp, evenings too" },
+  },
+  trust: {
+    label: { nl: "Beoordelingen en feiten", en: "Ratings and facts" },
+    google: { nl: (n: string) => `uit ${n} Google-reviews`, en: (n: string) => `from ${n} Google reviews` },
+    funda: { nl: "op Funda", en: "on Funda" },
+    sold: { nl: "woningen verkocht in Utrecht en omgeving", en: "homes sold in and around Utrecht" },
+    since: { nl: "jaar elk makelaar in Utrecht", en: "years each as estate agents in Utrecht" },
+  },
+  listings: {
+    title: { nl: "Nu te koop", en: "For sale now" },
+    all: { nl: "Bekijk het hele aanbod", en: "View all listings" },
+    kk: { nl: "k.k.", en: "buyer's costs" },
+    view: { nl: "Bekijk woning", en: "View home" },
+    scroll: { nl: "Woningen", en: "Homes" },
+    note: {
+      nl: (d: string) => `Aanbod zoals op rvlmakelaars.nl op ${d}. Op de echte site komt het automatisch uit uw huidige koppeling.`,
+      en: (d: string) => `Listings as on rvlmakelaars.nl on ${d}. On the real site they come straight from your current feed.`,
+    },
+  },
+  aanbod: {
+    title: { nl: "Aanbod", en: "Listings" },
+    lead: { nl: "Woningen in Utrecht en omgeving. Filter op uw budget.", en: "Homes in and around Utrecht. Filter by your budget." },
+    filters: { nl: "Filter op prijs", en: "Filter by price" },
+    bands: { nl: ["Alles", "Tot € 500.000", "€ 500.000 – 800.000", "Vanaf € 800.000"], en: ["All", "Up to € 500,000", "€ 500,000 – 800,000", "From € 800,000"] } as L<string[]>,
+    count: { nl: (n: number) => `${n} ${n === 1 ? "woning" : "woningen"}`, en: (n: number) => `${n} ${n === 1 ? "home" : "homes"}` },
+    alert: { nl: "Eerder weten wat er te koop komt?", en: "Hear about homes before they are listed?" },
+    alertBody: {
+      nl: "Als aankoopmakelaar horen wij vaak eerder welke woningen binnenkort beschikbaar komen. Vertel ons wat u zoekt.",
+      en: "As buying agents we often hear first which homes are about to come on the market. Tell us what you are looking for.",
+    },
+    alertCta: { nl: "Over aankopen", en: "About buying" },
+  },
+  steps: {
+    title: { nl: "Strategisch verkopen, in drie stappen", en: "Selling strategically, in three steps" },
+    items: {
+      nl: [
+        ["Waardebepaling", "Wij bekijken uw woning bij u thuis en adviseren over vraagprijs, positionering en timing."],
+        ["Presentatie", "Fotografie, 2D- en 3D-plattegronden en video, en waar nodig styling met onze eigen producten."],
+        ["Onderhandeling", "Lokale kennis, actuele data en een duidelijke strategie: vaak meerdere biedingen."],
+      ],
+      en: [
+        ["Valuation", "We view your home with you and advise on asking price, positioning and timing."],
+        ["Presentation", "Photography, 2D and 3D floor plans and video, and where needed styling with our own props."],
+        ["Negotiation", "Local knowledge, current data and a clear strategy: often several bids."],
+      ],
+    } as L<[string, string][]>,
+    nocure: { nl: "No cure, no pay", en: "No cure, no pay" },
+  },
+  reviews: {
+    title: { nl: "Wat verkopers over ons zeggen", en: "What sellers say about us" },
+    slot: {
+      nl: "Hier komt een echte Google-review, automatisch opgehaald met naam en datum.",
+      en: "A real Google review goes here, fetched automatically with name and date.",
+    },
+    source: { nl: "Google-review", en: "Google review" },
+  },
+  offices: {
+    title: { nl: "Twee kantoren, één team", en: "Two offices, one team" },
+    lead: {
+      nl: "Of u nu in Oost woont of in Leidsche Rijn: uw aanvraag komt binnen bij het kantoor dat uw buurt het best kent.",
+      en: "Whether you live in Oost or in Leidsche Rijn: your request arrives at the office that knows your area best.",
+    },
+    photoAlt: { nl: "Luchtfoto van de Utrechtse binnenstad met de Oudegracht", en: "Aerial photo of central Utrecht with the Oudegracht" },
+  },
+  team: {
+    title: { nl: "Ons team", en: "Our team" },
+    lead: {
+      nl: (y: number) => `Opgericht in ${y} door Egon Rosenberg en Niels van Leusden, die elkaar al kennen sinds hun veertiende. Bewust een klein team van vier, met korte lijnen.`,
+      en: (y: number) => `Founded in ${y} by Egon Rosenberg and Niels van Leusden, who have known each other since they were fourteen. Deliberately a small team of four, with short lines.`,
+    },
+    kwf: { nl: "KWF Zakenvriend sinds 2012", en: "KWF Zakenvriend since 2012" },
+  },
+  footer: {
+    ctaTitle: { nl: "Wat is uw woning waard?", en: "What is your home worth?" },
+    contact: { nl: "Contact", en: "Contact" },
+    member: { nl: "Lid van de NVM", en: "Member of the NVM" },
+    privacy: { nl: "Privacyverklaring", en: "Privacy statement" },
+    cookies: { nl: "Cookies", en: "Cookies" },
+    office: { nl: (n: string) => `Kantoor ${n}`, en: (n: string) => `${n} office` },
+  },
+  cookie: {
+    text: { nl: "Wij gebruiken cookies om de site te verbeteren. U kiest of u dat goedvindt.", en: "We use cookies to improve the site. You choose whether that is OK." },
+    decline: { nl: "Weigeren", en: "Decline" },
+    accept: { nl: "Accepteren", en: "Accept" },
+    label: { nl: "Cookiemelding", en: "Cookie notice" },
+  },
+  wb: {
+    crumb: { nl: "Verkopen", en: "Selling" },
+    title: { nl: "Wat is uw woning waard?", en: "What is your home worth?" },
+    lead: {
+      nl: "Vraag een gratis waardebepaling aan. Postcode en huisnummer zijn genoeg voor het adres; de rest vult u in vier korte stappen in.",
+      en: "Request a free valuation. A postcode and house number are enough for the address; you fill in the rest in four short steps.",
+    },
+    call: { nl: "Liever direct contact?", en: "Rather talk directly?" },
+  },
+  card: {
+    label: { nl: "Uw woningkaart", en: "Your home card" },
+    empty: { nl: "Vul uw postcode en huisnummer in. Hier verschijnt uw woning.", en: "Enter your postcode and house number. Your home appears here." },
+    looking: { nl: "Adres zoeken…", en: "Looking up the address…" },
+    notFound: { nl: "Dit adres vinden we niet. Klopt het huisnummer?", en: "We cannot find this address. Is the house number right?" },
+    offline: { nl: "Het adres kon niet worden opgezocht. Vul de straat zelf in, dat is ook goed.", en: "The address could not be looked up. Type the street yourself, that works too." },
+    bag: { nl: "uit het Kadaster (BAG)", en: "from the Land Registry (BAG)" },
+    area: { nl: "Oppervlakte", en: "Floor area" },
+    year: { nl: "Bouwjaar", en: "Built" },
+    type: { nl: "Type", en: "Type" },
+    rooms: { nl: "Kamers", en: "Rooms" },
+    when: { nl: "Afspraak", en: "Visit" },
+    reply: { nl: "Reactie via", en: "Reply by" },
+    photos: { nl: (n: number) => `${n} foto${n === 1 ? "" : "'s"}`, en: (n: number) => `${n} photo${n === 1 ? "" : "s"}` },
+    to: { nl: "Gaat naar", en: "Goes to" },
+    outside: { nl: "Buiten Utrecht? Wij komen ook bij u langs.", en: "Outside Utrecht? We will visit you too." },
+    notHome: { nl: "Volgens de BAG geen woning. Wij komen graag kijken.", en: "Not a home according to the BAG. We are happy to come and look." },
+    sent: { nl: "Aanvraag ontvangen", en: "Request received" },
+  },
+  form: {
+    steps: { nl: ["Adres", "Woning", "Moment", "Gegevens"], en: ["Address", "Home", "Timing", "Details"] } as L<string[]>,
+    progress: { nl: (i: number, n: number) => `Stap ${i} van ${n}`, en: (i: number, n: number) => `Step ${i} of ${n}` },
+    postcode: { nl: "Postcode", en: "Postcode" },
+    number: { nl: "Huisnummer en toevoeging", en: "House number and addition" },
+    street: { nl: "Straat", en: "Street" },
+    town: { nl: "Plaats", en: "Town" },
+    type: { nl: "Type woning", en: "Type of home" },
+    types: { nl: ["Appartement", "Tussenwoning", "Hoekwoning", "Twee-onder-een-kap", "Vrijstaand"], en: ["Apartment", "Terraced", "End of terrace", "Semi-detached", "Detached"] } as L<string[]>,
+    area: { nl: "Woonoppervlakte in m²", en: "Living area in m²" },
+    rooms: { nl: "Aantal kamers", en: "Number of rooms" },
+    photos: { nl: "Foto's van uw woning", en: "Photos of your home" },
+    photosHint: { nl: "Handig, niet nodig. Ze blijven op uw apparaat in dit voorbeeld.", en: "Helpful, not required. In this example they stay on your device." },
+    photosAdd: { nl: "Foto's kiezen", en: "Choose photos" },
+    when: { nl: "Wanneer komt een bezoek u het best uit?", en: "When suits you best for a visit?" },
+    whens: { nl: ["Doordeweeks", "’s Avonds", "Zaterdag"], en: ["Weekdays", "Evenings", "Saturday"] } as L<string[]>,
+    reply: { nl: "Hoe wilt u antwoord?", en: "How would you like a reply?" },
+    replies: { nl: ["Bel mij", "WhatsApp", "E-mail"], en: ["Call me", "WhatsApp", "Email"] } as L<string[]>,
+    optional: { nl: "optioneel", en: "optional" },
+    name: { nl: "Naam", en: "Name" },
+    phone: { nl: "Telefoonnummer", en: "Phone number" },
+    email: { nl: "E-mailadres", en: "Email address" },
+    next: { nl: "Volgende", en: "Next" },
+    back: { nl: "Terug", en: "Back" },
+    submit: { nl: "Waardebepaling aanvragen", en: "Request valuation" },
+    privacy: {
+      nl: "Wij gebruiken uw gegevens alleen om contact met u op te nemen over de waardebepaling.",
+      en: "We only use your details to contact you about the valuation.",
+    },
+    demo: { nl: "Verstuurt niets", en: "Sends nothing" },
+    errors: {
+      postcode: { nl: "Vul een postcode in zoals 3583 EN.", en: "Enter a postcode like 3583 EN." },
+      number: { nl: "Vul uw huisnummer in.", en: "Enter your house number." },
+      street: { nl: "Vul de straat in.", en: "Enter the street." },
+      town: { nl: "Vul de plaats in.", en: "Enter the town." },
+      type: { nl: "Kies het type woning.", en: "Choose the type of home." },
+      area: { nl: "Vul een getal in, bijvoorbeeld 85.", en: "Enter a number, for example 85." },
+      rooms: { nl: "Vul een getal in, bijvoorbeeld 4.", en: "Enter a number, for example 4." },
+      name: { nl: "Vul uw naam in.", en: "Enter your name." },
+      phone: { nl: "Vul een telefoonnummer van 10 cijfers in.", en: "Enter a 10-digit phone number." },
+      email: { nl: "Vul een geldig e-mailadres in.", en: "Enter a valid email address." },
+    },
+    doneTitle: { nl: (n: string) => `Dank u, ${n}.`, en: (n: string) => `Thank you, ${n}.` },
+    doneBody: {
+      nl: (office: string) => `Uw aanvraag staat klaar bij kantoor ${office}, met uw adres en woning al ingevuld. U hoeft niets opnieuw te typen.`,
+      en: (office: string) => `Your request is waiting at the ${office} office, with your address and home already filled in. You do not need to type anything again.`,
+    },
+    nextTitle: { nl: "Wat er nu gebeurt", en: "What happens next" },
+    nextSteps: {
+      nl: ["Egon of Niels belt, appt of mailt u, zoals u koos", "Wij bekijken de woning samen met u", "U krijgt advies over waarde, vraagprijs en verkoopstrategie"],
+      en: ["Egon or Niels calls, messages or emails you, as you chose", "We view the home together with you", "You get advice on value, asking price and sales strategy"],
+    } as L<string[]>,
+    again: { nl: "Formulier opnieuw tonen", en: "Show the form again" },
+    sentDemo: { nl: "Er is niets verstuurd.", en: "Nothing was sent." },
+  },
+  bar: {
+    label: { nl: "Snelle acties", en: "Quick actions" },
+    whatsapp: { nl: "WhatsApp", en: "WhatsApp" },
+    cta: { nl: "Waardebepaling", en: "Valuation" },
+  },
+};
+
+/** "650000" → "€ 650.000" (Dutch notation, also in the English version: it is a Dutch site). */
+export const euro = (n: number) => `€ ${n.toLocaleString("nl-NL")}`;
